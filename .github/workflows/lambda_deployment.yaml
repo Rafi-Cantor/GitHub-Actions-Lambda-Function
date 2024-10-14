@@ -16,7 +16,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install -r src/requirments.txt
+            pip install -r src/requirements.txt -t src/
 
       - name: Install zip tool
         uses: montudor/action-zip@v1

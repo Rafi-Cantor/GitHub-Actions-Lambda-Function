@@ -1,5 +1,4 @@
 name: Deploy Lambda Function
-
 on:
   push:
     branches:
@@ -20,11 +19,13 @@ jobs:
         run: |
           pip install -r src/requirements.txt -t src/dependencies
 
-      - name: Create zip file
+      - name: Install zip tool
         uses: montudor/action-zip@v1
-        run: cd src && zip -r code.zip .
 
-      - name: AWS CLI
+      - name: Create Zip file
+        run: cd src && zip -r code.zip .
+      - name: AWS CLI v2
+
         uses: imehedi/actions-awscli-v2@latest
         with:
           args: "lambda update-function-code \

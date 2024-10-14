@@ -4,9 +4,11 @@ on:
   push:
     branches:
       - main
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python
@@ -18,11 +20,11 @@ jobs:
         run: |
           pip install -r src/requirements.txt -t src/dependencies
 
-      - name: Install zip tool
+      - name: Create zip file
         uses: montudor/action-zip@v1
-      - name: Create Zip file
         run: cd src && zip -r code.zip .
-      - name: AWS CLI v2
+
+      - name: AWS CLI
         uses: imehedi/actions-awscli-v2@latest
         with:
           args: "lambda update-function-code \

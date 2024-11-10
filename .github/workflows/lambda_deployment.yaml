@@ -13,7 +13,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.10'
+          python-version: 3.10
 
       - name: Install dependencies
         run: |
@@ -29,7 +29,7 @@ jobs:
         uses: imehedi/actions-awscli-v2@latest
         with:
           args: "lambda update-function-code \
-            --function-name arn:aws:lambda:eu-west-2:009160063569:function:GitHub-Actions-Lambda-Function-3 \
+            --function-name arn:aws:lambda:eu-west-2:009160063569:function:GitHub-Actions-Lambda-Function \
             --zip-file fileb://src/code.zip"
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
